@@ -2,6 +2,8 @@
   "name": "social",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://sachinmeena1994.github.io/socially",
+
   "scripts": {
     "dev": "next dev",
     "build": "next build",
