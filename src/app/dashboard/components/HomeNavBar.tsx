@@ -46,7 +46,7 @@ export default function HomeNavbar() {
             <Link href="/timesheets/fill">Fill Timesheet</Link>
           </Button>
 
-          <ModeToggle />
+          {/* <ModeToggle /> */}
         </div>
 
         {/* Mobile Menu */}

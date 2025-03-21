@@ -20,7 +20,7 @@ import { SignOutButton } from "@clerk/nextjs"
 
 const menuItems = [
   { label: "Dashboard", icon: LayoutDashboard, href: "/" },
-  { label: "My Timesheet", icon: Folder , href: "/timesheets/details" },
+  { label: "My Timesheet", icon: Folder, href: "/timesheets/details" },
   { label: "Fill Timesheets", icon: CalendarDays, href: "/timesheets" },
   { label: "Approvals", icon: CheckCircle, href: "/approvals" },
   { label: "Reports", icon: PieChart, href: "/reports/timesheet" },
@@ -36,12 +36,19 @@ export default function SidebarMenu() {
   return (
     <aside className="hidden lg:flex flex-col w-64 h-screen border-r bg-white dark:bg-gray-900 px-4 py-6 space-y-4">
       {menuItems.map((item) => {
-        const isActive = pathname === item.href
+        const isActive =
+          item.href === "/"
+            ? pathname === "/"
+            : pathname.startsWith(item.href)
+
         return (
           <Link key={item.href} href={item.href}>
             <Button
-              variant={isActive ? "default" : "ghost"}
-              className={cn("w-full justify-start gap-2", isActive && "bg-primary text-white")}
+              variant="ghost"
+              className={cn(
+                "w-full justify-start gap-2 text-gray-700 dark:text-gray-300 hover:bg-muted",
+                isActive && "bg-primary text-white hover:bg-primary dark:bg-primary"
+              )}
             >
               <item.icon className="w-4 h-4" />
               {item.label}
@@ -50,7 +57,6 @@ export default function SidebarMenu() {
         )
       })}
 
-      {/* Sign Out at bottom */}
       <div className="mt-auto">
         <SignOutButton>
           <Button variant="destructive" className="w-full justify-start gap-2">
