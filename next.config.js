@@ -1,12 +1,10 @@
-// next.config.js
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export",
   images: {
-    unoptimized: true,
+    unoptimized: true, // Optional if you don't use Next.js Image component
   },
-  trailingSlash: true, // Needed for GitHub Pages
-  basePath: "/socially", // 👈 Important if your repo is not root
+  // ❌ DO NOT use output: "export"
+  // ❌ DO NOT use basePath or trailingSlash unless you're on GitHub Pages
 };
 
 module.exports = nextConfig;
